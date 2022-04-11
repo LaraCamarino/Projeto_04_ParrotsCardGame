@@ -45,6 +45,7 @@ distribuindoCartas();
 
 let primeiraCarta = null;
 let segundaCarta = null;
+let quantidadeJogadas = 0;
 
 function clicarCarta(elemento){
     elemento.classList.add("selecionada");
@@ -62,9 +63,11 @@ function verificarPares() {
         segundaCarta.classList.add("parAchado");
         primeiraCarta = null;
         segundaCarta = null;
+        setTimeout(finalizarJogo, 500);
     } else {
         setTimeout(desvirarCartas, 1000);
     }
+    quantidadeJogadas = quantidadeJogadas + 2;
 }
 
 function desvirarCartas() {
@@ -72,4 +75,11 @@ function desvirarCartas() {
     segundaCarta.classList.remove("selecionada");
     primeiraCarta = null;
     segundaCarta = null;
+}
+
+function finalizarJogo() {
+    let cartasComPar = document.querySelectorAll(".parAchado");
+    if(cartasComPar.length === quantidadeCartas) {
+        alert(`Parabéns! Você ganhou em ${quantidadeJogadas} jogadas!`);
+    }
 }
