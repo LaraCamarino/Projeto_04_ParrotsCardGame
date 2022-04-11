@@ -1,5 +1,8 @@
 let quantidadeCartas = Number(prompt("Com quantas cartas você deseja jogar?\n\nPor favor, selecione um número par entre 4 e 14."));
 
+function iniciarJogo() {
+    perguntarQuantidade()
+}
 
 function perguntarQuantidade() {
     while(quantidadeCartas % 2 !== 0 || quantidadeCartas < 4 || quantidadeCartas > 14
@@ -80,6 +83,15 @@ function desvirarCartas() {
 function finalizarJogo() {
     let cartasComPar = document.querySelectorAll(".parAchado");
     if(cartasComPar.length === quantidadeCartas) {
-        alert(`Parabéns! Você ganhou em ${quantidadeJogadas} jogadas!`);
+        alert(`Parabéns!!!\n\n Você ganhou em ${quantidadeJogadas} jogadas!`);
+        reininciarJogo();
+    }
+}
+function reininciarJogo() {
+    let perguntaReiniciar = prompt("Deseja jogar novamente?\n\nResponda 'Sim' ou 'Não'.");
+    if(perguntaReiniciar === "Sim" || perguntaReiniciar === "sim") {
+        document.location.reload(true);
+    } else if(perguntaReiniciar === "Não" || perguntaReiniciar === "não") {
+        alert("Obrigada por jogar!");
     }
 }
