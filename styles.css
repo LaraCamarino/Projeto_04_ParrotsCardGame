@@ -51,7 +51,8 @@ h1 {
     justify-content: center;
     position: absolute;
     backface-visibility: hidden;
-    
+    transition: all 0.5s;
+    transform-style: preserve-3d;
 }
 
 .verso {

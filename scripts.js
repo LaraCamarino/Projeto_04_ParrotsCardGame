@@ -43,3 +43,33 @@ function distribuindoCartas() {
 
 distribuindoCartas(); 
 
+let primeiraCarta = null;
+let segundaCarta = null;
+
+function clicarCarta(elemento){
+    elemento.classList.add("selecionada");
+    if(primeiraCarta === null) {
+        primeiraCarta = elemento;
+    } else {
+        segundaCarta = elemento;
+        verificarPares();
+    }
+}
+
+function verificarPares() {
+    if(primeiraCarta.innerHTML === segundaCarta.innerHTML) {
+        primeiraCarta.classList.add("parAchado");
+        segundaCarta.classList.add("parAchado");
+        primeiraCarta = null;
+        segundaCarta = null;
+    } else {
+        setTimeout(desvirarCartas, 1000);
+    }
+}
+
+function desvirarCartas() {
+    primeiraCarta.classList.remove("selecionada");
+    segundaCarta.classList.remove("selecionada");
+    primeiraCarta = null;
+    segundaCarta = null;
+}
